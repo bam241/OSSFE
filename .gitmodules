@@ -1,0 +1,3 @@
+[submodule "beamer_template"]
+	path = beamer_template
+	url = git@github.com:bam241/beamer_template.git
