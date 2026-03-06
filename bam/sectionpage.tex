@@ -1,0 +1,42 @@
+\AtBeginSection[]{
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture, overlay]
+
+      % --- full white background ---
+      \fill[white]
+        (current page.south west) rectangle (current page.north east);
+
+      % --- TOP BAR left half (charcoal) ---
+      \fill[darkcharcoal]
+        (current page.north west) rectangle
+        ([xshift=0.5\paperwidth, yshift=-0.055\paperheight]
+          current page.north west);
+
+      % --- TOP BAR right half (brown) ---
+      \fill[darkbrown]
+        ([xshift=0.5\paperwidth]current page.north west) rectangle
+        ([yshift=-0.055\paperheight]current page.north east);
+
+      % --- BOTTOM BAR left half (charcoal) ---
+      \fill[darkcharcoal]
+        (current page.south west) rectangle
+        ([xshift=0.5\paperwidth, yshift=0.055\paperheight]
+          current page.south west);
+
+      % --- BOTTOM BAR right half (brown) ---
+      \fill[darkbrown]
+        ([xshift=0.5\paperwidth]current page.south west) rectangle
+        ([yshift=0.055\paperheight]current page.south east);
+
+      % --- SECTION NAME ---
+      \node[
+        text=darkcharcoal,
+        font=\fontsize{40}{48}\selectfont,
+        anchor=center,
+        text width=0.85\paperwidth,
+        align=center
+      ] at (current page.center) {\insertsectionhead};
+
+    \end{tikzpicture}
+  \end{frame}
+}

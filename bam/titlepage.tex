@@ -1,0 +1,104 @@
+\setbeamertemplate{title page}{%
+  \begin{tikzpicture}[remember picture, overlay]
+
+    % --- full white background ---
+    \fill[white]
+      (current page.south west) rectangle (current page.north east);
+
+    % --- TOP BAR left half (charcoal) ---
+    \fill[darkcharcoal]
+      (current page.north west) rectangle
+      ([xshift=0.5\paperwidth, yshift=-0.055\paperheight]
+        current page.north west);
+
+    % --- TOP BAR right half (brown) ---
+    \fill[darkbrown]
+      ([xshift=0.5\paperwidth]current page.north west) rectangle
+      ([yshift=-0.055\paperheight]current page.north east);
+
+    % --- BOTTOM BAR left half (charcoal) ---
+    \fill[darkcharcoal]
+      (current page.south west) rectangle
+      ([xshift=0.5\paperwidth, yshift=0.055\paperheight]
+        current page.south west);
+
+    % --- BOTTOM BAR right half (brown) ---
+    \fill[darkbrown]
+      ([xshift=0.5\paperwidth]current page.south west) rectangle
+      ([yshift=0.055\paperheight]current page.south east);
+
+    % --- TOP GRADIENT BOX ---
+    \node[
+      left color=darkbrown,
+      right color=darkcharcoal,
+      rounded corners=8pt,
+      minimum width=\paperwidth-2*0.055\paperheight,
+      minimum height=2.8cm,
+      anchor=north west,
+      drop shadow
+    ] (topbox) at
+      ([xshift=0.055\paperheight, yshift=-2*0.055\paperheight]
+        current page.north west) {};
+
+    % --- TITLE TEXT ---
+    \node[
+      text=white,
+      font=\LARGE,
+      anchor=center,
+      text width=0.80\paperwidth,
+      align=center
+    ] at (topbox.center) {\inserttitle};
+
+    % --- BEIGE BOX ---
+    \node[
+      fill=titlebg,
+      rounded corners=10pt,
+      minimum width=\paperwidth-2*0.055\paperheight,
+      minimum height=\paperheight
+                    -5*0.055\paperheight
+                    -2.8cm,
+      anchor=north west,
+      drop shadow
+    ] (bigbox) at
+      ([xshift=0.055\paperheight,
+        yshift=-2*0.055\paperheight-2.8cm-0.055\paperheight]
+        current page.north west) {};
+
+    % --- SUBTITLE ---
+    \node[
+      anchor=north,
+      text=black,
+      font=\normalsize\bfseries,
+      text width=0.80\paperwidth,
+      align=center
+    ] at ([yshift=-0.5cm]bigbox.north) {\insertsubtitle};
+
+    % --- AUTHOR ---
+    \node[
+      anchor=north,
+      text=black,
+      font=\small,
+      text width=0.80\paperwidth,
+      align=center
+    ] at ([yshift=-2.0cm]bigbox.north) {\insertauthor};
+
+    % --- INSTITUTE ---
+    \node[
+      anchor=north,
+      text=black,
+      font=\small,
+      text width=0.80\paperwidth,
+      align=center
+    ] at ([yshift=-2.6cm]bigbox.north) {\insertinstitute};
+
+    % --- DATE ---
+    \node[
+      anchor=north,
+      text=black,
+      font=\small,
+      text width=0.80\paperwidth,
+      align=center
+    ] at ([yshift=-3.2cm]bigbox.north) {\insertdate};
+
+  \end{tikzpicture}
+}
